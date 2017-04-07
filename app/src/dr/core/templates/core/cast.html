@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Dahboard display</title>
+    <title>Dahboard display - {{ channel.name }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,9 +17,9 @@
     </style>
 
   </head>
-  <body data-url="{% url "cast-data" device_id=device_id %}">
-    <h1>{{ device_id }}</h1>
-    <iframe id="frame" src="http://bit.ly/2oPL8Gh"></iframe>
+  <body data-url="{% url "cast-data" device_id=channel.name %}">
+    <h1>{{ channel.name }}</h1>
+    <iframe id="frame" src="{{ channel.url }}"></iframe>
 
     <script src="{% static "js/client.js" %}"></script>
   </body>

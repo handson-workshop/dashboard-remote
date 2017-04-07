@@ -9,30 +9,25 @@
   </head>
   <body>
     <div class="display-list">
+      {% for channel in on_air %}
       <div class="display">
-        <div class="name">TV1</div>
-        <iframe src="http://codepen.io/lfjsa/full/bVoxww/"></iframe>
+        <div class="name">{{ channel.name }}</div>
+        <input type="checkbox" id="channel-{{ channel.name}}" value="{{ channel.name }}"/>
+        <label class="selectable" for="channel-{{ channel.name}}"></label>
+        <iframe src="{{ channel.url }}" id="frame-{{ channel.name }}"></iframe>
       </div>
-      <div class="display">
-        <div class="name">TV2</div>
-        <iframe src="http://codepen.io/lfjsa/full/bVoxww/"></iframe>
-      </div>
-      <div class="display">
-        <div class="name">bathroom</div>
-        <iframe src="http://codepen.io/lfjsa/full/bVoxww/"></iframe>
-      </div>
+      {% empty %}
+      <strong>No channels casted</strong>
+      {% endfor %}
     </div>
     <div class="controls">
       <div class="url-input">
-        <input type="url"/><span class="prefix">http(s)://</span>
+        <input type="url" name="url-field" id="url-field"/><span class="prefix">http(s)://</span>
       </div>
-      <select>
-        <option checked="checked">- All -</option>
-        <option>TV1</option>
-        <option>TV2</option>
-        <option>TV3</option>
-      </select>
-      <button>Cast!</button>
+      {% csrf_token %}
+      <button id="cast-button">Cast!</button>
     </div>
+
+    <script src="{% static "js/remote.js" %}"></script>
   </body>
 </html>

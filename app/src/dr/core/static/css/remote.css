@@ -3,7 +3,6 @@ html {
   font-family: "Raleway", sans-serif;
   font-size: 18px;
   color: #222;
-  margin: 0;
 }
 
 .display-list {
@@ -25,6 +24,20 @@ html {
   width: 16rem;
   margin: 1rem;
 }
+.display-list .display .selectable {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.display-list .display input:checked ~ .selectable {
+  background: rgba(32, 49, 23, 0.3);
+}
+.display-list .display input {
+  visibility: hidden;
+}
 .display-list .display .name {
   position: absolute;
   color: white;
@@ -34,9 +47,16 @@ html {
   padding: 0.3rem;
 }
 .display-list .display iframe {
-  width: 100%;
-  height: 100%;
+  width: 206%;
+  height: 206%;
   border: 0;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .controls {
