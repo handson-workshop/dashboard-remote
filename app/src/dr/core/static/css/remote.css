@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+html {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #222;
+  margin: 0;
+}
+
+.display-list {
+  height: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2rem;
+}
+.display-list .display {
+  background-color: #c6d2eb;
+  position: relative;
+  overflow: hidden;
+  border: 0.4rem solid #93afd7;
+  height: 9rem;
+  width: 16rem;
+  margin: 1rem;
+}
+.display-list .display .name {
+  position: absolute;
+  color: white;
+  font-size: 1rem;
+  background: #5b7786;
+  width: 100%;
+  padding: 0.3rem;
+}
+.display-list .display iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.controls {
+  height: 60vh;
+  background: #93afd7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.controls input, .controls button {
+  font-size: 1.5rem;
+  line-height: 2;
+}
+.controls .url-input {
+  margin: auto 0;
+  position: relative;
+}
+.controls .url-input input {
+  height: 3rem;
+  border: 0;
+  padding-left: 6.5rem;
+}
+.controls .url-input .prefix {
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  color: #6f6f6f;
+}
+.controls button {
+  padding: 0 1rem;
+}
+.controls button, .controls select {
+  border: 0;
+  margin: auto 0;
+  height: 3rem;
+}

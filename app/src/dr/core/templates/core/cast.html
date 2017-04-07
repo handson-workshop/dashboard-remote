@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dahboard display</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      html, body, #frame {
+        height: 100%;
+        width:100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+    </style>
+
+  </head>
+  <body data-url="{% url "cast-data" device_id=device_id %}">
+    <h1>{{ device_id }}</h1>
+    <iframe id="frame" src="http://bit.ly/2oPL8Gh"></iframe>
+
+    <script src="{% static "js/client.js" %}"></script>
+  </body>
+</html>
