@@ -6,15 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static "css/remote.css" %}">
+    <link rel="stylesheet" href="{% static "css/dashboard-remote-font.css" %}">
   </head>
   <body>
     <div class="display-list">
       {% for channel in on_air %}
-      <div class="display">
-        <div class="name">{{ channel.name }}</div>
-        <input type="checkbox" id="channel-{{ channel.name}}" value="{{ channel.name }}"/>
-        <label class="selectable" for="channel-{{ channel.name}}"></label>
-        <iframe src="{{ channel.url }}" id="frame-{{ channel.name }}"></iframe>
+      <div class="display" id="display-{{ channel.name}}">
+        <div class="header-display">
+          <div class="name">{{ channel.name }}</div>
+          <div class="actions">
+            <div class="remove" data-value="{{ channel.name }}">
+              <i class="link icon-cross"></i>
+            </div>
+          </div>
+        </div>
+        <div class="content-display">
+          <input type="checkbox" id="channel-{{ channel.name}}" value="{{ channel.name }}" />
+          <label class="selectable" for="channel-{{ channel.name}}"></label>
+          <iframe src="{{ channel.url }}" id="frame-{{ channel.name }}"></iframe>
+        </div>
       </div>
       {% empty %}
       <strong>No channels casted</strong>
@@ -25,7 +35,22 @@
         <input type="url" name="url-field" id="url-field"/><span class="prefix">http(s)://</span>
       </div>
       {% csrf_token %}
-      <button id="cast-button">Cast!</button>
+      <button id="cast-button" disabled="disabled">Cast!</button>
+    </div>
+
+    <div class="dimmer">
+      <div class="popup" id="remove-channel">
+        <div class="header"> 
+          <div class="title">Conferma</div>
+        </div>
+        <div class="content"> 
+          <div class="desc">Confermi di voler rimuovere il canale?</div>
+        </div>
+        <div class="actions">
+          <button class="conf">Conferma</button>
+          <button class="canc">Annulla</button>
+        </div>
+      </div>
     </div>
 
     <script src="{% static "js/remote.js" %}"></script>

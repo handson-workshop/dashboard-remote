@@ -5,11 +5,21 @@ html {
   color: #222;
 }
 
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
 .display-list {
-  height: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -20,47 +30,62 @@ html {
   position: relative;
   overflow: hidden;
   border: 0.4rem solid #93afd7;
+  margin: 1rem;
+  border-radius: 5px;
+}
+.display-list .display .header-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #5b7786;
+  z-index: 3;
+  font-size: 1rem;
+  padding: 0.4rem;
+}
+.display-list .display .header-display .name {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  color: white;
+}
+.display-list .display .content-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
   height: 9rem;
   width: 16rem;
-  margin: 1rem;
 }
-.display-list .display .selectable {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-.display-list .display input:checked ~ .selectable {
-  background: rgba(32, 49, 23, 0.3);
-}
-.display-list .display input {
-  visibility: hidden;
-}
-.display-list .display .name {
-  position: absolute;
-  color: white;
-  font-size: 1rem;
-  background: #5b7786;
-  width: 100%;
-  padding: 0.3rem;
-}
-.display-list .display iframe {
-  width: 206%;
-  height: 206%;
+.display-list .display .content-display iframe {
+  width: 300%;
+  height: 300%;
   border: 0;
   -webkit-transform-origin: top left;
           transform-origin: top left;
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
+  -webkit-transform: scale(0.333);
+          transform: scale(0.333);
   position: absolute;
   top: 0;
   left: 0;
 }
+.display-list .display .content-display .selectable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: inherit;
+  z-index: 2;
+}
+.display-list .display .content-display input:checked ~ .selectable {
+  background: rgba(32, 49, 23, 0.3);
+}
+.display-list .display .content-display input {
+  display: none;
+}
 
 .controls {
-  height: 60vh;
   background: #93afd7;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,10 +93,10 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 2rem 0;
 }
 .controls input, .controls button {
   font-size: 1.5rem;
-  line-height: 2;
 }
 .controls .url-input {
   margin: auto 0;
@@ -91,9 +116,80 @@ html {
 }
 .controls button {
   padding: 0 1rem;
-}
-.controls button, .controls select {
-  border: 0;
+  border: none;
   margin: auto 0;
   height: 3rem;
+  cursor: pointer;
+}
+
+.dimmer {
+  z-index: 201;
+  position: fixed;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(34, 34, 34, 0.3);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.dimmer.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dimmer .popup {
+  background: white;
+  padding: 1rem 3rem;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 5px;
+}
+.dimmer .popup.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dimmer .popup .header {
+  background: #395b50;
+  padding: 1rem;
+  text-align: center;
+}
+.dimmer .popup .header .title {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.dimmer .popup .content {
+  padding: 1.5rem 1rem;
+}
+.dimmer .popup .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.dimmer .popup .actions button {
+  height: 2rem;
+  margin-left: 0.4rem;
+  font-size: 1rem;
+  border: none;
+  background: #c6d2eb;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0 0.8rem;
 }
