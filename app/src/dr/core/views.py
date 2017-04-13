@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 
 from .models import Channel
-from .forms import ChannelForm
+from .forms import ChannelForm, ChannelRemoveForm
 
 
 logger = logging.getLogger(__name__)
@@ -41,6 +41,29 @@ def cast_update(request):
 			channel.save()
 		response_data['success'] = True
 		response_data['message'] = channel.url
+	except Exception, e:
+		response_data['message'] = e.message
+	finally:
+		return HttpResponse(json.dumps(response_data), content_type='application/json')
+
+def cast_remove(request):
+	response_data = {'success': False, 'message': None}
+	if request.method != 'POST':
+		return HttpResponseBadRequest('{} method not allowed'.format(request.method))
+
+	logger.debug('Remove channel')
+
+	form = ChannelRemoveForm(request.POST)
+	if not form.is_valid():
+		logger.debug('Errors: %s', form.errors)
+		return HttpResponseBadRequest('Invalid data')
+
+	try:
+		channel = Channel.objects.get(name=form.cleaned_data['channel'])
+		channel.delete()
+
+		response_data['success'] = True
+		response_data['message'] = form.cleaned_data['channel']
 	except Exception, e:
 		response_data['message'] = e.message
 	finally:
