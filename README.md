@@ -71,8 +71,7 @@ Per avviare il server eseguire il comando:
 
 Ed aprire il browser all'indirizzo: ```http://localhost:8000/dr/remote```
 
-Aprire il browser sul dispositivo su cui eseguire il cast all'indirizzo:
-```http://myservername:8000/dr/cast/hellocast```
+Aprire il browser sul dispositivo su cui eseguire il cast all'indirizzo: ```http://myservername:8000/dr/cast/hellocast```
 
 ## Tecnologie utilizzate
 Per la realizzazione di questo progetto sono state utilizzate le seguenti
