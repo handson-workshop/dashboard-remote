@@ -10,3 +10,7 @@ Per avviare il server eseguire il comando:
 	$ docker-compose up
 
 Ed aprire il browser all'indirizzo: ```http://localhost:8000/dr/remote```
+
+```sh
+$ git clone <REPOSITORY-URL>
+```
