@@ -53,25 +53,30 @@ Per una guida pratica su come utilizzare *Docker for Linux* vedi questo
 [video]().
 
 ### Installazione
-Configurare il server ed inserire gli host .... in ```ALLOWED_HOST``` nel file *settings.py*
-di Django posto in (app/src/dr/settings.py), modificare come segue:
+Configurare il server ed inserire gli hostname o l'Ip del server in
+```ALLOWED_HOST``` nel file *settings.py* di Django posto in 
+(app/src/dr/settings.py), modificare come segue:
 
 ```python
 ALLOWED_HOSTS = [
     'localhost',
-	'myservername,
+	'myservername',
+	'192.xxx.xxx.xxx'
 ]
 ``` 
 
 Per avviare il server eseguire il comando:
 
 ```sh
-	$ docker-compose up
+$ docker-compose up
 ```
 
-Ed aprire il browser all'indirizzo: ```http://localhost:8000/dr/remote```
+Aprire il browser all'indirizzo: ```http://localhost:8000/dr/remote```
 
 Aprire il browser sul dispositivo su cui eseguire il cast all'indirizzo: ```http://myservername:8000/dr/cast/hellocast```
+
+É possibile eseguire ilserver ed il cast sulla stessa macchina, in questo caso 
+eseguire il cast digitando l'indirizzo: ```http://localhost:8000/dr/localhostcast```
 
 ## Tecnologie utilizzate
 Per la realizzazione di questo progetto sono state utilizzate le seguenti
@@ -88,3 +93,4 @@ tecnologie:
 ## Autori
 
 ## Licenza
+MIT...
