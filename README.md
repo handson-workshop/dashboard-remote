@@ -93,4 +93,4 @@ tecnologie:
 ## Autori
 
 ## Licenza
-MIT...
+Dashboard Remote è rilasciato sotto licenza MIT.
