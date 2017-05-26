@@ -4,7 +4,8 @@
   <head>
     <title>Dahboard remote control</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="{% static "css/remote.css" %}">
     <link rel="stylesheet" href="{% static "css/dashboard-remote-font.css" %}">
   </head>
@@ -27,15 +28,18 @@
         </div>
       </div>
       {% empty %}
-      <strong>No channels casted</strong>
+      <strong>Nessun canale disponibile</strong>
       {% endfor %}
     </div>
     <div class="controls">
-      <div class="url-input">
-        <input type="url" name="url-field" id="url-field"/><span class="prefix">http(s)://</span>
+      <div class="url-container">
+        <div class="url-field">
+          <div class="pre-text"> <span>http://</span></div>
+          <input type="url" placeholder="ignora http://" name="url-field" id="url-field" />
+        </div>
+        {% csrf_token %}
+        <button id="cast-button" disabled="disabled">Cast!</button>
       </div>
-      {% csrf_token %}
-      <button id="cast-button" disabled="disabled">Cast!</button>
     </div>
 
     <div class="dimmer">
@@ -53,6 +57,7 @@
       </div>
     </div>
 
+    <script src="{% static "js/simpleHttpClient.js" %}"></script>
     <script src="{% static "js/remote.js" %}"></script>
   </body>
 </html>

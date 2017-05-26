@@ -5,8 +5,14 @@ html {
   color: #222;
 }
 
+body, html {
+  min-width: 320px;
+  width: 100%;
+}
+
 body {
   margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -20,10 +26,9 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 .display-list .display {
   background-color: #c6d2eb;
@@ -85,6 +90,7 @@ body {
   display: none;
 }
 
+/* INPUT URL STYLE */
 .controls {
   background: #93afd7;
   display: -webkit-box;
@@ -93,35 +99,65 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 2rem 0;
 }
-.controls input, .controls button {
-  font-size: 1.5rem;
+
+.controls .url-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 90%;
+  max-width: 800px;
 }
-.controls .url-input {
-  margin: auto 0;
-  position: relative;
-}
-.controls .url-input input {
+.controls .url-container .url-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid gray;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
   height: 3rem;
-  border: 0;
-  padding-left: 6.5rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
-.controls .url-input .prefix {
-  position: absolute;
-  left: 0.5rem;
-  top: 1rem;
-  font-size: 1.5rem;
-  color: #6f6f6f;
+.controls .url-container .url-field .pre-text {
+  height: 100%;
+  background-color: gray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5px;
 }
-.controls button {
-  padding: 0 1rem;
+.controls .url-container .url-field input {
   border: none;
-  margin: auto 0;
-  height: 3rem;
+  padding: 0 5px;
+  width: 100%;
+  min-width: 0;
+}
+.controls .url-container button {
+  border: 1px solid gray;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
+.controls .url-container .url-field input, 
+.controls .url-container .url-field span,
+.controls .url-container button {
+  font-size: 1.5rem;
+}
 
+/* POP UP STYLE */
 .dimmer {
   z-index: 201;
   position: fixed;
@@ -142,6 +178,7 @@ body {
   right: 0;
   bottom: 0;
 }
+
 .dimmer.visible {
   display: -webkit-box;
   display: -ms-flexbox;
