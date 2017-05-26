@@ -29,9 +29,13 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
+  -webkit-transition: botom 1s ease-in;
+  -moz-transition: botom 1s ease-in;
+  transition: botom 1s ease-in;
 }
 .wrap .toolbar .title {
-  background: rgba(91, 119, 134, 0.9);
+  background: rgba(91, 119, 134, 1);
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,28 +44,52 @@ html, body {
       -ms-flex-align: center;
           align-items: center;
 }
+.wrap .toolbar .title:before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -30px;
+  display: block;
+  width: 85px;
+  background: rgba(91, 119, 134, 1);
+  -webkit-transform: skew(40deg);
+  -ms-transform: skew(40deg);
+  transform: skew(40deg);
+}
 .wrap .toolbar .title span {
   color: white;
   padding: 1rem;
   font-size: 2rem;
   font-weight: bold;
+  z-index: 2;
 }
 .wrap .toolbar .title .icon {
   color: white;
   font-size: 2rem;
   padding-left: 1rem;
-}
-.wrap .toolbar .divider {
-  width: 54px;
-  height: 4rem;
-  background-image: url('../images/shape-shadow.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
+  z-index: 2;
 }
 .wrap .toolbar .info {
-  background: rgba(198, 210, 235, 0.7);
+  background: rgba(198, 210, 235, 1);
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin-top: 10px;
+  margin-left: 70px;
+  position: relative;
+}
+.wrap .toolbar .info:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -30px;
+  display: block;
+  width: 85px;
+  background: rgba(198, 210, 235, 1);
+  -webkit-transform: skew(40deg);
+  -ms-transform: skew(40deg);
+  transform: skew(40deg);
 }
