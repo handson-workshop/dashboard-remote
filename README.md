@@ -1,3 +1,4 @@
+
 # Dashboard remote
 
 Web application per il controllo remoto di qualsiasi dispositivo, TV o monitor 
@@ -25,6 +26,11 @@ ALLOWED_HOSTS = [
 	'192.xxx.xxx.xxx'
 ]
 ``` 
+
+Prima di avviare il server è necessario effetuuare una migrazione del database eseguendo il seguente comando:
+```sh
+$ docker-compose run --rm app python manage.py migrate --no-input
+```
 
 Per avviare il server eseguire il comando:
 
